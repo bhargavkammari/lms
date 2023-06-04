@@ -11,7 +11,8 @@ pipeline {
         }
         stage('Build LMS') {
             steps {
-                echo 'Building..'
+                echo 'Building Artifacts..'
+                sh 'cd webapp && npm install && npm run build'
             }
         }
         stage('Test LMS') {
