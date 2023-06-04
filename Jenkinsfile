@@ -15,9 +15,11 @@ pipeline {
                 sh 'cd webapp && npm install && npm run build '
             }
         }
-        stage('Test LMS') {
+        stage('Release LMS') {
             steps {
-                echo 'Testing..'
+                echo 'Store Artifacts..'
+                sh 'cd webapp && zip dist-1.zip -r dist'
+                sh 'cd webapp && curl -v -u admin:admin1234 --upload-file dist-1.zip http://20.193.240.176:8081/repository/lms/'
             }
         }
         stage('Deploy') {
