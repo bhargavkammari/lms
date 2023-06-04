@@ -22,9 +22,13 @@ pipeline {
                 sh 'cd webapp && curl -v -u admin:admin1234 --upload-file dist-1.zip http://20.193.240.176:8081/repository/lms/'
             }
         }
-        stage('Deploy') {
+        stage('Deploy LMS') {
             steps {
                 echo 'Deploying.... '
+                sh 'sudo rm -rf /var/www/html'
+                sh 'curl -u admin:admin1234 -X GET \'http://20.193.240.176:8081/repository/lms/dist-1.zip\' --output dist.zip'
+                sh 'unzip dist.zip'
+                sh 'sudo cp -r dist/* /var/www/html/'
             }
         }
     }
