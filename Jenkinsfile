@@ -1,26 +1,20 @@
 pipeline {
     agent any
 
-stages {
-        stage('Sonar Analysis') {
-            steps {
-                echo 'Building..'
-            }
-        }
     stages {
-        stage('Build LMS') {
+        stage('Build') {
             steps {
                 echo 'Building..'
             }
         }
-        stage('Test LMS') {
+        stage('Test') {
             steps {
                 echo 'Testing..'
             }
         }
-        stage('Deploy LMS') {
+        stage('Deploy') {
             steps {
-                echo 'Deploying.... '
+                echo 'Deploying....'
             }
         }
     }
