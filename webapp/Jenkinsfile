@@ -20,7 +20,7 @@ stages {
         }
         stage('Deploy LMS') {
             steps {
-                echo 'Deploying.... '
+                echo 'Deploying....  '
             }
         }
     }
